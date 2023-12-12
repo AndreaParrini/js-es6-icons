@@ -132,8 +132,7 @@ generateIconsBox(icons);
 const allBoxEl = document.querySelectorAll('.box');
 
 document.getElementById('show').addEventListener('click', function () {
-    const typeIcon = document.getElementById('typeicons').value;
-
+    const typeIcon = document.getElementById('typeicons').value; 
     if (typeIcon === 'user') {
         allBoxEl.forEach(element => {
             if (element.classList.contains('vegetable') || element.classList.contains('animal')) {
@@ -173,10 +172,10 @@ document.getElementById('show').addEventListener('click', function () {
 function generateIconsBox(icons) {
     icons.forEach(icon => {
         const boxMarkup = `
-        <div class="col">
-            <div class="box text-center ${icon.type} d-none">
-                <i class="fa-solid fa-2xl ${icon.prefix}${icon.name} p-4" style="color: ${icon.color};"></i>
-                <span class="d-block">${icon.name}</span>
+        <div class="col-3">
+            <div class="box card text-center ${icon.type} mb-4 p-3 w-75 rounded-4 shadow">
+                <i class="fa-solid fa-2xl ${icon.prefix}${icon.name} p-4" style="color: ${icon.color}; font-size: 3rem;"></i>
+                <span class="d-block text-uppercase fs-6 fw-bold mt-2">${icon.name}</span>
             </div>
         </div>
         `
@@ -193,3 +192,5 @@ function generateRandomColor(){
     const color = "#" + randomColor;
     return color;
 }
+
+

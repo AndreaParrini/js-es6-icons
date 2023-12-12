@@ -12,16 +12,27 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
-<body>
-    <div class="container mt-5">
-        <select id="typeicons" class="form-select form-select-lg mb-3" aria-label="Large select example">
-            <option selected>Mostra Tutte le icone</option>
-            <option value="animal">Animal</option>
-            <option value="vegetable">Vegetable</option>
-            <option value="user">User</option>
-        </select>
-        <button id="show" class="btn btn-dark" type="button">Show</button>
-        <div class="row row-cols-4 mt-5">
+<body class="bg-body-secondary">
+    <header class="bg-light">
+        <div class="text-uppercase text-primary fs-1 fw-bold">FontIcons</div>
+    </header>
+    <nav class="d-flex justify-content-center bg-primary flex-column align-items-center">
+        <div class="text-uppercase fs-4 fw-bold">
+            Filtra per Tipo
+        </div>
+        <div class="text-center w-25 d-flex my-3 gap-3 " >
+            <select id="typeicons" class="form-select form-select-lg" aria-label="Large select example">
+                <option>All</option>
+                <option value="animal">Animal</option>
+                <option value="vegetable">Vegetable</option>
+                <option value="user">User</option>
+            </select>
+            <button id="show" class="btn btn-dark" type="button">Show</button>
+        </div>
+    </nav>
+    <div class="mx-4 mt-5">
+        
+        <div class="row mt-5">
 
         </div>
     </div>
