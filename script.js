@@ -113,6 +113,20 @@ const icons = [
     }
 ];
 
+const color1 = generateRandomColor();
+const color2 = generateRandomColor();
+const color3 = generateRandomColor();
+
+icons.forEach(icon => {
+    if(icon.color === 'orange'){
+        icon.color = color1;
+    }else if(icon.color === 'blue'){
+        icon.color = color2;
+    }else{
+        icon.color = color3;
+    }
+})
+
 generateIconsBox(icons);
 
 const allBoxEl = document.querySelectorAll('.box');
@@ -124,7 +138,7 @@ document.getElementById('show').addEventListener('click', function () {
         allBoxEl.forEach(element => {
             if (element.classList.contains('vegetable') || element.classList.contains('animal')) {
                 element.classList.add('d-none')
-            } else if (element.classList.contains('user')) {
+            } else {
                 element.classList.remove('d-none')
             }
         });
@@ -132,7 +146,7 @@ document.getElementById('show').addEventListener('click', function () {
         allBoxEl.forEach(element => {
             if (element.classList.contains('user') || element.classList.contains('animal')) {
                 element.classList.add('d-none')
-            } else if (element.classList.contains('vegetable')) {
+            } else {
                 element.classList.remove('d-none')
             }
         });
@@ -140,7 +154,7 @@ document.getElementById('show').addEventListener('click', function () {
         allBoxEl.forEach(element => {
             if (element.classList.contains('user') || element.classList.contains('vegetable')) {
                 element.classList.add('d-none')
-            } else if (element.classList.contains('animal')) {
+            } else {
                 element.classList.remove('d-none')
             }
         });
@@ -168,4 +182,14 @@ function generateIconsBox(icons) {
         `
         document.querySelector('.row').insertAdjacentHTML('beforeend', boxMarkup);
     });
+}
+
+/**
+ * function to generate a random color 
+ * @returns a string of color
+ */
+function generateRandomColor(){
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    const color = "#" + randomColor;
+    return color;
 }
