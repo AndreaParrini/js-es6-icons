@@ -1,8 +1,3 @@
-/* 
-                Milestone 1
-Partendo dalla struttura dati fornita, visualizzare in pagina un box per ogni icona, in cui è presente il nome dell'icona e l'icona stessa.
-*/
-
 const icons = [
     {
         name: 'cat',
@@ -120,11 +115,52 @@ const icons = [
 
 generateIconsBox(icons);
 
-function generateIconsBox(icons){
+const allBoxEl = document.querySelectorAll('.box');
+
+document.getElementById('show').addEventListener('click', function () {
+    const typeIcon = document.getElementById('typeicons').value;
+
+    if (typeIcon === 'user') {
+        allBoxEl.forEach(element => {
+            if (element.classList.contains('vegetable') || element.classList.contains('animal')) {
+                element.classList.add('d-none')
+            } else if (element.classList.contains('user')) {
+                element.classList.remove('d-none')
+            }
+        });
+    } else if (typeIcon === 'vegetable') {
+        allBoxEl.forEach(element => {
+            if (element.classList.contains('user') || element.classList.contains('animal')) {
+                element.classList.add('d-none')
+            } else if (element.classList.contains('vegetable')) {
+                element.classList.remove('d-none')
+            }
+        });
+    } else if (typeIcon === 'animal') {
+        allBoxEl.forEach(element => {
+            if (element.classList.contains('user') || element.classList.contains('vegetable')) {
+                element.classList.add('d-none')
+            } else if (element.classList.contains('animal')) {
+                element.classList.remove('d-none')
+            }
+        });
+    } else {
+        allBoxEl.forEach(element => {
+            element.classList.remove('d-none')
+        });
+    }
+})
+
+
+/**
+ * Function to generate all icon's box
+ * @param {Array} icons insert the array who contain the icons
+ */
+function generateIconsBox(icons) {
     icons.forEach(icon => {
         const boxMarkup = `
         <div class="col">
-            <div class="box text-center ${icon.type}">
+            <div class="box text-center ${icon.type} d-none">
                 <i class="fa-solid fa-2xl ${icon.prefix}${icon.name} p-4" style="color: ${icon.color};"></i>
                 <span class="d-block">${icon.name}</span>
             </div>
