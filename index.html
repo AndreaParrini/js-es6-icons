@@ -14,20 +14,17 @@
 
 <body class="bg-body-secondary">
     <header class="bg-light">
-        <div class="text-uppercase text-primary fs-1 fw-bold">FontIcons</div>
+        <div class="text-uppercase text-primary fs-1 fw-bold p-3">FontIcons</div>
     </header>
-    <nav class="d-flex justify-content-center bg-primary flex-column align-items-center">
-        <div class="text-uppercase fs-4 fw-bold">
+    <nav class="d-flex justify-content-center bg-primary gap-3 align-items-center">
+        <div class="text-uppercase fs-4 fw-bold text-light">
             Filtra per Tipo
         </div>
-        <div class="text-center w-25 d-flex my-3 gap-3 " >
+        <div id="section_select" class="text-center w-25 d-flex my-3 " >
             <select id="typeicons" class="form-select form-select-lg" aria-label="Large select example">
                 <option>All</option>
-                <option value="animal">Animal</option>
-                <option value="vegetable">Vegetable</option>
-                <option value="user">User</option>
+                
             </select>
-            <button id="show" class="btn btn-dark" type="button">Show</button>
         </div>
     </nav>
     <div class="mx-4 mt-5">
