@@ -269,8 +269,3 @@ function generateRandomColor() {
     const color = "#" + randomColor;
     return color;
 }
-
-
-
-
-
