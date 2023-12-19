@@ -113,19 +113,10 @@ const icons = [
     }
 ];
 
-const color1 = generateRandomColor();
-const color2 = generateRandomColor();
-const color3 = generateRandomColor();
 
-icons.forEach(icon => {
-    if (icon.color === 'orange') {
-        icon.color = color1;
-    } else if (icon.color === 'blue') {
-        icon.color = color2;
-    } else {
-        icon.color = color3;
-    }
-})
+modifyColor(icons);
+
+console.log(icons);
 
 generateIconsBox(icons);
 generateOptionValue(icons);
@@ -270,4 +261,24 @@ function generateRandomColor() {
     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
     const color = "#" + randomColor;
     return color;
+}
+
+/**
+ * Function to modify random color
+ * @param {array} icons array of all icons
+ */
+function modifyColor(icons) {
+    const color1 = generateRandomColor();
+    const color2 = generateRandomColor();
+    const color3 = generateRandomColor();
+
+    icons.forEach(icon => {
+        if (icon.color === 'orange') {
+            icon.color = color1;
+        } else if (icon.color === 'blue') {
+            icon.color = color2;
+        } else {
+            icon.color = color3;
+        }
+    })
 }
