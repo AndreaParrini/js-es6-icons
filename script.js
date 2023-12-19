@@ -173,8 +173,7 @@ Così che aggiungo la classe d-none ai box che non contengono la classe del tipo
 }) */
 
 
-/* 
-            METODO FILTER
+/*  METODO FILTER
 Metodo con filter, per ogni scelta dell'utente, creo un array nuovo con solo le icone di quel tipo
 Poi richiamo la funzione per generare i box e gli passo solo l'array che contiene quelle icone.
 */
@@ -182,7 +181,17 @@ document.getElementById('typeicons').addEventListener('change', function () {
     const typeIcon = this.value;
     console.log(typeIcon);
 
-    if (typeIcon === 'user') {
+    //creo un nuovo array, contenente solo le icone del tipo selezionato
+    const iconFilter = icons.filter((element => element.type === typeIcon || typeIcon === 'all'))
+    // azzero l'html all'interno di row
+    document.querySelector('.row').innerHTML = "";
+    // richiamo la funzione e gli passo l'array con solo le icone user
+    generateIconsBox(iconFilter);
+
+    /*  UTILLIZZO DELL'IF
+        con l'if andavo a vedere cosa selezionava l'utente e poi filtravo le icone di quel tipo
+    
+        if (typeIcon === 'user') {
         // se l'utente ha selezionato il valore user, con il metodo filter creo un nuovo array, contenente solo le icone del tipo selezionato
         const userIcon = icons.filter((element => element.type === typeIcon))
         // azzero l'html all'interno di row
@@ -212,7 +221,7 @@ document.getElementById('typeicons').addEventListener('change', function () {
         // richiamo la funzione e gli passo l'array con tutte le icone in quanto l'utente non seleziona nessuna tipologia in particolare
         generateIconsBox(icons);
 
-    }
+    } */
 })
 
 
@@ -239,22 +248,15 @@ function generateIconsBox(icons) {
  * @param {array} icons insert array whit all icon
  */
 function generateOptionValue(icons) {
-    let typesOfIcon = "";
 
-    const typeOfIcon = icons.filter((element, index) => {
-        if (index === 0) {
-            typesOfIcon = element.type;
-            return true;
-        } else if (index != 0 && element.type != typesOfIcon) {
-            typesOfIcon = element.type;
-            return true;
-        }
-        return false;
-    })
+    // creo un nuovo array che contiene tutte le tipologie delle icone
+    // con la funzione *new set* mi crea un array con solo valori unici senza duplicati così da avere un array con tutte le tipolgie
+    const typesOfIcon = new Set(icons.map(icon => icon.type));
 
-    typeOfIcon.forEach(type => {
+    //scorro l'array per creare il value 
+    typesOfIcon.forEach(type => {
         const optionMarkup = `
-        <option value="${type.type}">${type.type}</option>
+        <option value="${type}">${type}</option>
         `
         document.getElementById('typeicons').insertAdjacentHTML('beforeend', optionMarkup);
     });
